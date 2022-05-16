@@ -58,6 +58,7 @@ li {
 	display: inline-block;
 }
 
+/* label, */
 .control-item {
 	display: inline-block;
 	width: 15px;
@@ -67,6 +68,10 @@ li {
 	border: 0.25rem solid transparent;
 	border-radius: 50%;
 	font-size: 0;
+}
+
+input[type="radio"]:checked+label>.control-item {
+	background-color: aliceblue;
 }
 
 .control-item::selection {
