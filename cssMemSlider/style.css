@@ -3,6 +3,16 @@ body {
 	margin: 0;
 }
 
+h1 {
+	font-family: 'Georgia';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 30px;
+	line-height: 110%;
+	letter-spacing: 0.06em;
+	color: #313131;
+}
+
 .container {
 	width: 100%;
 	padding: 50px 0;
@@ -11,8 +21,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-	background-color: cornflowerblue;
+	background-color: rgb(249, 243, 236);
 }
 
 .slider {
@@ -24,7 +33,15 @@ body {
 	justify-content: space-between;
 	align-items: center;
 
-	background-color: beige;
+	background-color: rgb(155, 180, 131);
+}
+
+.slider-content {
+	width: 450px;
+
+	display: grid;
+	grid-template-columns: 1fr 80px;
+	grid-template-rows: 450px 20px 1fr;
 }
 
 .slider-pages-wrapper {
@@ -35,14 +52,28 @@ body {
 	column-gap: 40px;
 
 	overflow-x: scroll;
-	/* counter-reset: item; */
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
+
+	grid-row-start: 1;
+	grid-row-end: 4;
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+.controls {
+	z-index: 100;
+	grid-row-start: 3;
+	grid-row-end: 4;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	margin: auto;
 }
 
 .slider-page {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	row-gap: 20px;
 }
 
@@ -50,32 +81,48 @@ body {
 	width: 450px;
 }
 
-ul,
+.slider-page span {
+	width: calc(100% - 80px);
+
+	font-family: 'Georgia';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 115%;
+
+	letter-spacing: 0.06em;
+
+	color: black;
+}
+
 li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	display: inline-block;
+	display: flex;
 }
 
-/* label, */
+ul {
+	width: 80px;
+
+	margin: 0;
+	padding: 0;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .control-item {
 	display: inline-block;
-	width: 15px;
-	height: 15px;
-	background-color: #333;
+	width: 10px;
+	height: 10px;
+	background-color: #313131;
 	background-clip: content-box;
 	border: 0.25rem solid transparent;
 	border-radius: 50%;
 	font-size: 0;
-}
-
-input[type="radio"]:checked+label>.control-item {
-	background-color: aliceblue;
-}
-
-.control-item::selection {
-	background-color: aliceblue;
+	border: 0;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -91,8 +138,39 @@ input[type="radio"]:checked+label>.control-item {
 
 @media (max-width: 767px) {
 
+	.container {
+		padding: 20px 0;
+	}
+
+	.slider-content {
+		width: 280px;
+
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 280px 20px 1fr;
+	}
+
 	.slider-pages-wrapper {
 		width: 280px;
+
+		grid-row-start: 1;
+		grid-row-end: 4;
+		grid-column-start: 1;
+		grid-column-end: 2;
+	}
+
+	.controls {
+		z-index: 100;
+		grid-row-start: 2;
+		grid-row-end: 3;
+		grid-column-start: 1;
+		grid-column-end: 2;
+		margin: auto;
+	}
+
+	.slider-page span {
+		width: 100%;
+		letter-spacing: 0.03em;
 	}
 
 	.slider-page img {
